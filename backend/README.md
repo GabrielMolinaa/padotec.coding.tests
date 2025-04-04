@@ -22,14 +22,19 @@ Endpoints:
 ## Passos para executar o código:
 
 ### Clone o repositório
- - git clone https://github.com/GabrielMolinaa/padotec.coding.tests.git
-
+ ```bash
+ git clone https://github.com/GabrielMolinaa/padotec.coding.tests.git
+```
 ### Entre na pasta do repositorio clonado e na pasta backend
- - cd repositorio_clonado
- - cd backend
+```bash
+cd repositorio_clonado
+cd backend
+```
 
 ### Digite o seguinte comando no terminal estando na pasta 'backend' para subir os containers da API e do MongoDB 
- - docker-compose up --build
+```bash
+docker-compose up --build
+```
 
 # A API estará disponível em:
  - http://localhost:3000
