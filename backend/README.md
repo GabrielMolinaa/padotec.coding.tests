@@ -1,18 +1,25 @@
-Como Rodar com Docker
-Pré-requisitos:
 
-    Docker instalado
+# API desenvolvida para o Desafio para Desenvolvedor Full-Stack P&D (Back-end) (PADO)
 
-    Git instalado
+Este projeto é uma API RESTful desenvolvida em Node.js com Express e MongoDB para cadastrar, listar e buscar dispositivos.
 
-Passos:
+Endpoints:
+POST /registrar
 
-# Clone o repositório
-git clone https://github.com/GabrielMolinaa/padotec.coding.tests.git
-cd repositorio_clonado
+GET /listar
+GET /listar/:deviceId
 
-# Suba os containers da API e do MongoDB
-docker-compose up --build
+## Passos para executar o código:
 
-A API estará disponível em:
-http://localhost:3000
+### Clone o repositório
+ - git clone https://github.com/GabrielMolinaa/padotec.coding.tests.git
+
+### Entre na pasta do repositorio clonado e na pasta backend
+ - cd repositorio_clonado
+ - cd backend
+
+### Digite o seguinte comando no terminal estando na pasta 'backend' para subir os containers da API e do MongoDB 
+ - docker-compose up --build
+
+# A API estará disponível em:
+ - http://localhost:3000
