@@ -1,10 +1,13 @@
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
 
 function App() {
   return (
-    <div>
-      <h1>FGH - Logs de Acesso</h1>
-      <Home />
+    <div className="min-h-screen bg-gray-100">
+      <Navbar />
+      <main className="p-4">
+        <Home />
+      </main>
     </div>
   );
 }

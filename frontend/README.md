@@ -1,12 +1,38 @@
-# React + Vite
+# Aplicação (Front-end) de monitoramento de logs desenvolvida para o Desafio para Desenvolvedor Full-Stack P&D (Font-End) (PADO)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto utiliza React + Vite como tecnologia e fornece a visualização de logs de acesso a dispositivos de segurança.  
 
-Currently, two official plugins are available:
+Os dados utilizados foram fornecidos pela Pado através do arquivo `data.json`, consumidos via fetch como se fosse uma API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades
 
-## Expanding the ESLint configuration
+- Visualização de logs por **Usuário** ou por **Dispositivo**
+- Filtro dinâmico por nome, userId, MAC ou lockId
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+OBS: Tomei a liberdade para inserir Tailwindcss e Mui Material para facilitar a estilização.
+
+## Passos para executar o código
+
+### Clone o repositório
+
+```bash
+git clone https://github.com/GabrielMolinaa/padotec.coding.tests.git
+```
+
+### Entre na pasta do repositorio clonado e na pasta frontend
+```bash
+ cd repositorio_clonado
+ cd frontend
+ ```
+### Digite o seguinte comando no terminal estando na pasta 'frontend' para construir a imagem Docker
+```bash
+docker build -t desafio-front-end .
+ ```
+
+### Digite o seguinte comando para rodar o container
+```bash
+docker run -d -p 8080:80 desafio-front-end
+ ```
+
+# A aplicação estará disponível em:
+- http://localhost:8080

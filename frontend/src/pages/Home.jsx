@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import ListaLog from '../components/listaLogs';
+import ListaLog from '../components/ListaLogs';
 
 const Home = () => {
   const [logs, setLogs] = useState([]);
-  const [viewMode, setViewMode] = useState('user'); // 'user' ou 'device'
+  const [modoVisualizacao, setmodoVisualizacao] = useState('usuario');
   const [filtro, setFiltro] = useState('');
 
   useEffect(() => {
@@ -16,47 +16,52 @@ const Home = () => {
   }, []);
 
   const handleFiltro = (e) => setFiltro(e.target.value);
-  const handleViewChange = (e) => {
-    setViewMode(e.target.value);
+  
+  const handleAlteracaoView = (e) => {
+    setmodoVisualizacao(e.target.value);
     setFiltro('');
   };
 
-  // Filtro dinâmico
+  // Lógica do Filtro
   const logsFiltrados = logs.filter((log) => {
-    if (viewMode === 'user') {
+    const textoFiltro = filtro.trim().toLowerCase();
+    if (modoVisualizacao === 'usuario') {
       return (
-        log.payload.userName.toLowerCase().includes(filtro.toLowerCase()) ||
-        log.payload.userId.toLowerCase().includes(filtro.toLowerCase())
+        log.payload.userName.toLowerCase().includes(textoFiltro) ||
+        log.payload.userId.toLowerCase().includes(textoFiltro)
       );
     } else {
       return (
-        log.mac.toLowerCase().includes(filtro.toLowerCase()) ||
-        log.lockId.toLowerCase().includes(filtro.toLowerCase())
+        log.mac.toLowerCase().includes(textoFiltro) ||
+        log.lockId.toLowerCase().includes(textoFiltro)
       );
     }
   });
 
   return (
     <div>
-      <div style={{ marginBottom: '1rem' }}>
-        <label>Visualizar por: </label>
-        <select value={viewMode} onChange={handleViewChange}>
-          <option value="user">Usuário</option>
-          <option value="device">Dispositivo</option>
-        </select>
+      <div className="flex flex-col md:flex-row md:items-center gap-4 bg-white border border-gray-300 rounded-md p-4 mb-4 shadow-sm">
+        <div className="flex items-center gap-2">
+          <label className="font-medium text-gray-700">Visualizar por:</label>
+          <select value={modoVisualizacao} onChange={handleAlteracaoView} 
+          className="bg-white border border-gray-300 text-gray-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="usuario">Usuário</option>
+            <option value="dispositivo">Dispositivo</option>
+          </select>
+        </div>
 
         <input
           type="text"
           placeholder={
-            viewMode === 'user' ? 'Filtrar por nome ou userId' : 'Filtrar por MAC ou lockId'
+            modoVisualizacao === 'usuario' ? 'Filtrar por nome ou usuarioId' : 'Filtrar por MAC ou lockId'
           }
           value={filtro}
           onChange={handleFiltro}
-          style={{ marginLeft: '1rem' }}
+          className="flex-1 bg-white border border-gray-300 text-gray-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
-      <ListaLog logs={logsFiltrados} mode={viewMode} />
+      <ListaLog logs={logsFiltrados} mode={modoVisualizacao} />
     </div>
   );
 };
