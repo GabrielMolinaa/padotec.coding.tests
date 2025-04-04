@@ -4,17 +4,25 @@ exports.registrarDispositivo = async (req, res) => {
 
   // Método para registrar um dispositivo
   // Retornos:
-  // 400 -> Quando faltar um campo na requisição
-  // 409 -> Quando tentar registrar um endereço MAC já registrado
+  // 400 -> Quando faltar um campo na requisição ou quando o endereço MAC não é válido
+  // 409 -> Quando tentar registrar um endereço MAC já registrado 
   // 201 -> Sucesso, registra o dispositivo no banco de dados
   // 500 -> Quando ocorrer algum erro interno no servidor
 
   const { name, mac, email, timestamp } = req.body;
-
+  
+  // Validações 
   if (!name || !mac || !email || !timestamp) {
     return res.status(400).json({ error: "Todos os campos são obrigatórios." });
   }
 
+  const macRegex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/;
+
+  if (!macRegex.test(mac)) {
+    return res.status(400).json({ error: "Endereço MAC inválido." });
+  }
+ 
+  
   try {
 
     const dispositivoExistente = await Dispositivo.findOne({ mac });
