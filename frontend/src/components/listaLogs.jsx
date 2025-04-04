@@ -8,6 +8,8 @@ const formatarData = (timestamp) => {
 const ListaLog = ({ logs, mode }) => {
   return (
     <div>
+      
+      {/* Título dinâmico e a legenda para as cores de fundo dos registros nesse bloco*/}
       <h2 className="text-xl font-semibold mb-4">
         Logs ({mode === 'usuario' ? 'por Usuário' : 'por Dispositivo'})
       </h2>
@@ -21,6 +23,8 @@ const ListaLog = ({ logs, mode }) => {
           Travamento
         </div>
       </div>
+
+      {/* Tabela responsável por exibir os logs */}
       <table className="w-full border border-gray-300 text-left">
         <thead>
           <tr className="bg-gray-200">
@@ -32,13 +36,15 @@ const ListaLog = ({ logs, mode }) => {
           </tr>
         </thead>
         <tbody>
+          
           {logs.map((log) => {
+      
+            // Processamento dos dados do log
             const nome = log.payload.userName;
             const tipo = log.payload.type === 1 ? 'abriu' : 'trancou';
             const metodo = log.payload.method === 3 ? 'Cartão de Acesso 💳' : 'Aplicativo 📱';
             const dataFormatada = formatarData(log.payload.timestamp);
             const estadoFinal = log.payload.isLocked ? '🔒 Trancado' : '🔓 Destrancado';
-
             const bgColor = log.payload.type === 1 ? 'bg-green-50' : 'bg-red-50';
 
             return (

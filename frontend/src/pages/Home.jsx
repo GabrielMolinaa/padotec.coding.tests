@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react';
 import ListaLog from '../components/ListaLogs';
 
 const Home = () => {
+
+  // Estados
   const [logs, setLogs] = useState([]);
   const [modoVisualizacao, setmodoVisualizacao] = useState('usuario');
   const [filtro, setFiltro] = useState('');
 
+  // Simulando a chamada (fetch) para uma API utilizando o arquivo json
   useEffect(() => {
     fetch('/data.json')
       .then((res) => res.json())
@@ -15,12 +18,14 @@ const Home = () => {
       });
   }, []);
 
+  //Handlers
   const handleFiltro = (e) => setFiltro(e.target.value);
   
   const handleAlteracaoView = (e) => {
     setmodoVisualizacao(e.target.value);
     setFiltro('');
   };
+
 
   // Lógica do Filtro
   const logsFiltrados = logs.filter((log) => {
@@ -60,7 +65,7 @@ const Home = () => {
           className="flex-1 bg-white border border-gray-300 text-gray-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-
+      {/* Renderiza a lista de logs com base no filtro e modo de visualização */}
       <ListaLog logs={logsFiltrados} mode={modoVisualizacao} />
     </div>
   );
