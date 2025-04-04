@@ -5,6 +5,14 @@ Este projeto é uma API RESTful desenvolvida em Node.js com Express e MongoDB pa
 
 Endpoints:
 - POST /registrar
+SCHEMA de Registro:
+JSON
+{
+  "name": "nome do dispositivo",
+  "mac": "endereço MAC do dispositivo",
+  "email": "email",
+  "timestamp": timestamp
+}
 
 - GET /listar
 - GET /listar/:deviceId
