@@ -8,11 +8,11 @@ Pré-requisitos:
 Passos:
 
 # Clone o repositório
-git clone https://github.com/seu-usuario/seu-repo.git
-cd seu-repo
+git clone https://github.com/GabrielMolinaa/padotec.coding.tests.git
+cd repositorio_clonado
 
 # Suba os containers da API e do MongoDB
 docker-compose up --build
 
 A API estará disponível em:
-👉 http://localhost:3000
+http://localhost:3000
