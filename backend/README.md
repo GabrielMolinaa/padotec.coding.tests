@@ -4,10 +4,20 @@
 Este projeto é uma API RESTful desenvolvida em Node.js com Express e MongoDB para cadastrar, listar e buscar dispositivos.
 
 Endpoints:
-POST /registrar
+- POST /registrar
 
-GET /listar
-GET /listar/:deviceId
+### Schema Registro
+```json
+{
+  "name": "nome do dispositivo",
+  "mac": "endereço MAC do dispositivo",
+  "email": "email",
+  "timestamp": 1712133000
+}
+```
+
+- GET /listar
+- GET /listar/:deviceId
 
 ## Passos para executar o código:
 
