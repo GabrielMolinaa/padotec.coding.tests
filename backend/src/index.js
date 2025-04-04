@@ -9,8 +9,8 @@ app.use(express.json());
 
 
 
-const deviceRoutes = require("./routes/deviceRoutes");
-app.use("/", deviceRoutes);
+const dispositivoRotas = require("./routes/dispositivoRotas");
+app.use("/", dispositivoRotas);
 
 const PORT = process.env.PORT || 3000;
 
